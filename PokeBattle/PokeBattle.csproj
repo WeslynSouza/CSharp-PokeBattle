@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jogadores\Jogadores.cs" />
+    <Compile Include="Pokemons\Ataques.cs" />
+    <Compile Include="Pokemons\Pokemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
