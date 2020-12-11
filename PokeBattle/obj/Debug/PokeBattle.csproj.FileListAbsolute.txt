@@ -1,0 +1,7 @@
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\bin\Debug\PokeBattle.exe.config
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\bin\Debug\PokeBattle.exe
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\bin\Debug\PokeBattle.pdb
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\obj\Debug\PokeBattle.csprojAssemblyReference.cache
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\obj\Debug\PokeBattle.csproj.CoreCompileInputs.cache
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\obj\Debug\PokeBattle.exe
+C:\Users\wisle\OneDrive\Documents\CsharpProjects\PokeBattle\PokeBattle\obj\Debug\PokeBattle.pdb
