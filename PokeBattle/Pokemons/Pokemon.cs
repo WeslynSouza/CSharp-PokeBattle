@@ -9,12 +9,14 @@ namespace PokeBattle.Pokemons
     public class Pokemon
     {
         public string Nome { get; private set; }
+        public int QntVidaMaxima { get; private set; }
         public int QntVida { get; private set; }
         public Ataque[] Ataques { get; private set; }
 
         public Pokemon(string nome, int vida, Ataque primeiroAtaque, Ataque segundoAtaque)
         {
             Nome = nome;
+            QntVidaMaxima = vida;
             QntVida = vida;
             Ataques = new Ataque[2] {primeiroAtaque, segundoAtaque};
         }
