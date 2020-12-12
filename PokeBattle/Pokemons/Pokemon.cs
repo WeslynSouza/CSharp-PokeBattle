@@ -15,29 +15,36 @@ namespace PokeBattle.Pokemons
 
         public Pokemon(string nome, int vida, Ataque primeiroAtaque, Ataque segundoAtaque)
         {
-            Nome = nome;
-            QntVidaMaxima = vida;
-            QntVida = vida;
-            Ataques = new Ataque[2] {primeiroAtaque, segundoAtaque};
+            this.Nome = nome;
+            this.QntVidaMaxima = vida;
+            this.QntVida = vida;
+            this.Ataques = new Ataque[2] {primeiroAtaque, segundoAtaque};
         }
 
         public void ExibirPokemon()
         {
-            Console.WriteLine("Nome do pokemon: " + Nome);
-            Console.WriteLine("Quandidade de vida do pokemon: " + Nome);
+            Console.WriteLine("Nome do pokemon: " + this.Nome);
+            Console.WriteLine("Quantidade de vida maxima do prokemon: " + this.QntVidaMaxima);
+            Console.WriteLine("Quandidade de vida atual do pokemon: " + this.QntVida);
             Console.WriteLine("Ataques do pokemon: ");
-            Ataques[0].ExibirAtaque();
-            Ataques[1].ExibirAtaque();
+            this.Ataques[0].ExibirAtaque();
+            this.Ataques[1].ExibirAtaque();
         }
 
         public void AlterarNome(string novoNome)
         {
-            Nome = novoNome;
+            this.Nome = novoNome;
+        }
+
+        public void AumentarVidaMaxima(int qnt)
+        {
+            this.QntVidaMaxima += qnt;
+            this.QntVida += qnt;
         }
 
         public void PerderVida(int qntVida)
         {
-            QntVida -= qntVida;
+            this.QntVida -= qntVida;
         }
 
         public void ReceberVida(int qntVida)
@@ -47,9 +54,9 @@ namespace PokeBattle.Pokemons
 
         public void AlterarAtaque(int indice, string nome, int dano, int acerto)
         {
-            Ataques[indice].AlterarNome(nome);
-            Ataques[indice].AlterarDano(dano);
-            Ataques[indice].AlterarAcerto(acerto);
+            this.Ataques[indice].AlterarNome(nome);
+            this.Ataques[indice].AlterarDano(dano);
+            this.Ataques[indice].AlterarAcerto(acerto);
         }
     }
 }
