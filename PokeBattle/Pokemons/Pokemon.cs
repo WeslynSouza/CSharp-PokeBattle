@@ -33,9 +33,14 @@ namespace PokeBattle.Pokemons
             Nome = novoNome;
         }
 
-        public void AlterarQntVida(int vida)
+        public void PerderVida(int qntVida)
         {
-            QntVida = vida;
+            QntVida -= qntVida;
+        }
+
+        public void ReceberVida(int qntVida)
+        {
+            QntVida += qntVida;
         }
 
         public void AlterarAtaque(int indice, string nome, int dano, int acerto)
