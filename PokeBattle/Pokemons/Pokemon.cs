@@ -31,25 +31,26 @@ namespace PokeBattle.Pokemons
             this.Ataques[1].ExibirAtaque();
         }
 
-        public void AlterarNome(string novoNome)
+        public void _PerderVida(int qntVida)
         {
-            this.Nome = novoNome;
+            this.QntVida -= qntVida;
         }
 
-        public void AumentarVidaMaxima(int qnt)
+        public void _ReceberVida(int qntVida)
+        {
+            QntVida += qntVida;
+        }
+
+        public void _AumentarVidaMaxima(int qnt)
         {
             this.QntVidaMaxima += qnt;
             this.QntVida += qnt;
         }
 
-        public void PerderVida(int qntVida)
+        /*
+        public void AlterarNome(string novoNome)
         {
-            this.QntVida -= qntVida;
-        }
-
-        public void ReceberVida(int qntVida)
-        {
-            QntVida += qntVida;
+            this.Nome = novoNome;
         }
 
         public void AlterarAtaque(int indice, string nome, int dano, int acerto)
@@ -58,5 +59,6 @@ namespace PokeBattle.Pokemons
             this.Ataques[indice].AlterarDano(dano);
             this.Ataques[indice].AlterarAcerto(acerto);
         }
+        */
     }
 }

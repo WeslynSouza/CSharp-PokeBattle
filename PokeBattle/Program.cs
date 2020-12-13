@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokeBattle.Jogadores;
 using PokeBattle.Pokemons;
 
 namespace PokeBattle
@@ -12,7 +13,26 @@ namespace PokeBattle
     {
         static void Main(string[] args)
         {
-            ExibirMenuInicial();
+
+            Ataque ataque1 = new Ataque("NomeAtaque1", 40, 60);
+            Ataque ataque2 = new Ataque("NomeAtaque2", 30, 70);
+
+            Pokemon pokemon1 = new Pokemon("NomePokemon1", 120, ataque1, ataque2);
+            Pokemon pokemon2 = new Pokemon("NomePokemon2", 150, ataque2, ataque1);
+
+            Jogador jogador = new Jogador("NomeTreinador1", pokemon1, pokemon2);
+            Inimigo inimigo = new Inimigo("NomeTreinador2", pokemon2, pokemon1);
+
+            Console.WriteLine("Vida atuald dos pokemons em campo:");
+            Console.WriteLine("Player: " + jogador.pokemonEmCampo.QntVida);
+            Console.WriteLine("Inimigo: " + inimigo.pokemonEmCampo.QntVida);
+
+            jogador.Atacar(0, 0, inimigo.pokemonEmCampo);
+
+            Console.WriteLine("Vida atuald dos pokemons em campo:");
+            Console.WriteLine("Player: " + jogador.pokemonEmCampo.QntVida);
+            Console.WriteLine("Inimigo: " + inimigo.pokemonEmCampo.QntVida);
+
 
             Console.ReadLine();
         }

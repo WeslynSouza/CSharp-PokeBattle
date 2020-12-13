@@ -19,18 +19,34 @@ namespace PokeBattle.Jogadores
             Pokemon PrimeiroPokemon = new Pokemon(primeiroPokemon.Nome, primeiroPokemon.QntVida, primeiroPokemon.Ataques[0], primeiroPokemon.Ataques[1]);
             Pokemon SegundoPokemon = new Pokemon(segundoPokemon.Nome, segundoPokemon.QntVida, segundoPokemon.Ataques[0], segundoPokemon.Ataques[1]);
             this.pokemons = new Pokemon[2] { PrimeiroPokemon, SegundoPokemon };
+            this.EscolherPokemon(PrimeiroPokemon);
         }
 
-        public void EscolherPokemon(Pokemon pokemon)
+        public bool EscolherPokemon(Pokemon pokemon)
         {
             if (pokemon != this.pokemons[0] && pokemon != this.pokemons[1])
             {
                 Console.WriteLine("Pokemon invalido! Selecione um pokmemon valido!");
+                return false;
+            }
+            else if(this.pokemonEmCampo == pokemon)
+            {
+                Console.WriteLine("O pokemon já está em campo e não pode ser selecionado!");
+                return false;
             }
             else
             {
-                this.pokemonEmCampo = pokemon;
-                Console.WriteLine("O pokemon " + pokemon.Nome + " foi selecionado!");
+                if (pokemon.QntVida <= 0)
+                {
+                    Console.WriteLine("Este pokemon está inconciente e não pode ser selecionado!");
+                    return false;
+                }
+                else
+                {
+                    this.pokemonEmCampo = pokemon;
+                    Console.WriteLine("O pokemon " + pokemon.Nome + " foi selecionado!");
+                    return true;
+                }
             }
         }
 
@@ -44,51 +60,44 @@ namespace PokeBattle.Jogadores
                 Console.WriteLine( this.pokemons[indicePokemon].Nome + " acertou o golpe " +
                     this.pokemons[indicePokemon].Ataques[indiceAtaque].Nome + " atingindo o " +
                     pokemon.Nome + ", causando " + this.pokemons[indicePokemon].Ataques[indiceAtaque].Dano + " de dano!" );
-                pokemon.PerderVida( this.pokemons[indicePokemon].Ataques[indiceAtaque].Dano );
+                pokemon._PerderVida( this.pokemons[indicePokemon].Ataques[indiceAtaque].Dano );
             }
             else
             {
-                Console.WriteLine(pokemons[indicePokemon].Nome + "Errou o golpe!");
+                Console.WriteLine(pokemons[indicePokemon].Nome + " errou o golpe!");
             }
         }
 
         public bool Curar(int cura, Pokemon pokemon)
         {
-            if(pokemon.QntVida >= pokemon.QntVidaMaxima)
+            if(pokemon.QntVida <= 0)
             {
-                Console.WriteLine("O " + pokemon.Nome + " está com a vida maxima!");
+                Console.WriteLine("O pokemon está inconsciente e não pode receber cura!");
                 return false;
             }
             else
             {
-                if(pokemon.QntVida <= (pokemon.QntVidaMaxima - cura))
+                if(pokemon.QntVida >= pokemon.QntVidaMaxima)
                 {
-                    pokemon.ReceberVida(cura);
-                    Console.WriteLine("O " + pokemon.Nome + " curou " + cura + " de vida!");
-                    return true;
+                    Console.WriteLine("O " + pokemon.Nome + " está com a vida maxima!");
+                    return false;
                 }
                 else
                 {
-                    int maximoCura = pokemon.QntVidaMaxima - pokemon.QntVida;
-                    pokemon.ReceberVida(maximoCura);
-                    Console.WriteLine("O " + pokemon.Nome + " curou " + maximoCura + " de vida!");
-                    return true;
+                    if(pokemon.QntVida <= (pokemon.QntVidaMaxima - cura))
+                    {
+                        pokemon._ReceberVida(cura);
+                        Console.WriteLine("O " + pokemon.Nome + " curou " + cura + " de vida!");
+                        return true;
+                    }
+                    else
+                    {
+                        int maximoCura = pokemon.QntVidaMaxima - pokemon.QntVida;
+                        pokemon._ReceberVida(maximoCura);
+                        Console.WriteLine("O " + pokemon.Nome + " curou " + maximoCura + " de vida!");
+                        return true;
+                    }
                 }
-            }
-        }
-
-        public bool MudarPokemon(Pokemon pokemon)
-        {
-            if(pokemon.QntVida <= 0)
-            {
-                Console.WriteLine("Este pokemon está inconciente e não pode ser selecionado!");
-                return false;
-            }
-            else
-            {
-                this.pokemonEmCampo = pokemon;
-                Console.WriteLine("O pokemon " + pokemon.Nome + " foi selecionado!");
-                return true;
             }
         }
     }
